@@ -2,8 +2,8 @@ import { ILocation } from '../stores/types';
 import axios, { AxiosInstance } from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3031/api',
-  // baseURL: 'https://location-note-api.herokuapp.com/api',
+  // baseURL: 'http://localhost:3031/api',
+  baseURL: 'https://location-note-api.herokuapp.com/api',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
