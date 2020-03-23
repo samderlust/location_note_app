@@ -55,7 +55,7 @@ const _HomeScreen = (props: IHomeScreenProps & StateProps) => {
       <LocationAppBar />
       <div className={classes.container}>
         <Typography className={classes.header} variant="h3">
-          Does my Pet need an Umbrella?
+          Location Notes
         </Typography>
         <ButtonGroup
           className={classes.buttonGroup}
@@ -75,7 +75,12 @@ const _HomeScreen = (props: IHomeScreenProps & StateProps) => {
             Table View
           </Button>
         </ButtonGroup>
-        {mapView && <LocationMapView />}
+        {mapView && (
+          <LocationMapView
+            showDetail={() => setShowDetail(true)}
+            setCurrentLocation={setCurrentLocation}
+          />
+        )}
         {!mapView && (
           <LocationTable
             showDetail={() => setShowDetail(true)}

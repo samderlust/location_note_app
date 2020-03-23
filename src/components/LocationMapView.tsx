@@ -3,10 +3,14 @@ import GoogleMapReact from 'google-map-react';
 import { connect } from 'react-redux';
 import { StoreState } from '../stores/reducers';
 import { LocationMarker } from './Marker';
+import { ILocation } from '../stores/types';
 
 const G_KEY = process.env.REACT_APP_GOOGLE_API_KEY as string;
 
-interface ILocationMapViewProps {}
+interface ILocationMapViewProps {
+  showDetail(): void;
+  setCurrentLocation: Function;
+}
 
 interface StateProps extends StoreState {}
 
@@ -31,10 +35,10 @@ const _LocationMapView = (props: ILocationMapViewProps & StateProps) => {
         }}
         bootstrapURLKeys={{ key: G_KEY }}
         defaultCenter={{
-          lat: 45.2487862,
-          lng: -76.3606792
+          lat: 45.3770557,
+          lng: -75.6931054
         }}
-        defaultZoom={6}
+        defaultZoom={9}
         yesIWantToUseGoogleMapApiInternals={true}
       >
         {allLocations.map(location => (
@@ -43,6 +47,8 @@ const _LocationMapView = (props: ILocationMapViewProps & StateProps) => {
             lng={location.longitude}
             key={location.id}
             location={location}
+            showDetail={props.showDetail}
+            setCurrentLocation={() => props.setCurrentLocation(location)}
           />
         ))}
       </GoogleMapReact>

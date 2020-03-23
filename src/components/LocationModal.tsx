@@ -34,23 +34,23 @@ const _LocationModal = (props: ILocationModalProps) => {
       <React.Fragment>
         {props.currentLocation && (
           <Card>
-            <CardHeader title={props.currentLocation?.name} />
-
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2"></Typography>
+              <Typography gutterBottom variant="h5" component="h2">
+                {props.currentLocation?.name}
+              </Typography>
               <Typography variant="body2">
                 {props.currentLocation.description}
               </Typography>
             </CardContent>
 
             <CardActions>
-              {/* <Button
-                onClick={() => history.push('/')}
+              <Button
+                onClick={props.onClose}
                 variant="contained"
                 color="primary"
               >
-                See other pets
-              </Button> */}
+                Back
+              </Button>
             </CardActions>
           </Card>
         )}

@@ -6,9 +6,15 @@ interface ILocationMarkerProps {
   lat: number;
   lng: number;
   location: ILocation;
+  showDetail(): void;
+  setCurrentLocation: Function;
 }
 
-export const LocationMarker = ({ location }: ILocationMarkerProps) => {
+export const LocationMarker = ({
+  location,
+  showDetail,
+  setCurrentLocation
+}: ILocationMarkerProps) => {
   const history = useHistory();
 
   return (
@@ -29,7 +35,10 @@ export const LocationMarker = ({ location }: ILocationMarkerProps) => {
         wordWrap: 'break-word',
         overflow: 'hidden'
       }}
-      onClick={() => history.push(`/pet/${location.id}`)}
+      onClick={() => {
+        showDetail();
+        setCurrentLocation();
+      }}
     >
       {location.name}
     </div>
