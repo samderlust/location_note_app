@@ -7,6 +7,7 @@ export enum locationActions {
   SET_ERROR_MESSAGE = 'SET_ERROR_MESSAGE',
   GET_LOCATION_BY_ID = 'GET_LOCATION_BY_ID',
   SET_CURRENT_LOCATION = 'SET_CURRENT_LOCATION',
+  DELETE_A_LOCATION = 'DELETE_A_LOCATION',
   SET_IS_CREATING = 'SET_IS_CREATING'
 }
 
@@ -58,6 +59,12 @@ export interface ISetIsCreating extends Action {
   type: locationActions.SET_IS_CREATING;
   data: boolean;
 }
+
+export interface IDeleteLocation extends Action {
+  type: locationActions.DELETE_A_LOCATION;
+  data: number;
+}
+
 export type ILocationAction =
   | IGetAllLocationsActions
   | ISetAllLocationActions
@@ -65,4 +72,5 @@ export type ILocationAction =
   | IGetLocationById
   | ISetCurrentLocation
   | ISetIsCreating
+  | IDeleteLocation
   | ISetErrorMessage;

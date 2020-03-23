@@ -19,6 +19,11 @@ export const locationReducer = (
       return { ...state, currentLocation: action.data };
     case locationActions.SET_IS_CREATING:
       return { ...state, isCreating: action.data };
+    case locationActions.DELETE_A_LOCATION:
+      const newList = state.allLocations.filter(
+        location => location.id !== action.data
+      );
+      return { ...state, allLocations: newList };
     default:
       return state;
   }

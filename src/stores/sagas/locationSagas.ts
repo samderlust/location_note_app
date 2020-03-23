@@ -1,4 +1,4 @@
-import { setIsCreating } from './../actions/';
+import { setIsCreating, deleteALocation } from './../actions/';
 import {
   setAllLocations,
   setErrorMessage,
@@ -15,7 +15,8 @@ import {
 import {
   fetchAllLocations,
   fetchCreateLocation,
-  fetchLocationById
+  fetchLocationById,
+  axiosDeleteLocationById
 } from '../../api/locationApi';
 
 import { put, call, takeLatest } from 'redux-saga/effects';
@@ -55,8 +56,17 @@ function* getLocationByIdSaga(action: IGetLocationById) {
     yield put(setCurrentLocation(null));
   }
 }
+
+function* deleteLocationByIdSaga(action: IGetLocationById) {
+  try {
+    yield call(axiosDeleteLocationById, action.data);
+  } catch (error) {
+    console.log(error);
+  }
+}
 export function* watchLocationSagas() {
   yield takeLatest(locationActions.GET_ALL_LOCATIONS, fetchAllLocationsSaga);
   yield takeLatest(locationActions.CREATE_A_LOCATION, createNewLocationSaga);
   yield takeLatest(locationActions.GET_LOCATION_BY_ID, getLocationByIdSaga);
+  yield takeLatest(locationActions.DELETE_A_LOCATION, deleteLocationByIdSaga);
 }

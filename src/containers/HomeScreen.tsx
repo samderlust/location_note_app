@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getAllLocations } from '../stores/actions';
+import { getAllLocations, deleteALocation } from '../stores/actions';
 import { StoreState } from '../stores/reducers';
 import { Container, Typography, ButtonGroup, Button } from '@material-ui/core';
 import { LocationTable } from '../components/LocationTable';
@@ -30,13 +30,15 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface IHomeScreenProps {
   getAllLocations: Function;
+  deleteALocation: Function;
 }
 
 interface StateProps extends StoreState {}
 
 const _HomeScreen = (props: IHomeScreenProps & StateProps) => {
   const {
-    locationReducer: { allLocations }
+    locationReducer: { allLocations },
+    deleteALocation
   } = props;
   const classes = useStyles();
 
@@ -86,6 +88,7 @@ const _HomeScreen = (props: IHomeScreenProps & StateProps) => {
             showDetail={() => setShowDetail(true)}
             allLocations={allLocations}
             setCurrentLocation={setCurrentLocation}
+            deleteALocation={deleteALocation}
           />
         )}
       </div>
@@ -100,6 +103,7 @@ const _HomeScreen = (props: IHomeScreenProps & StateProps) => {
 
 const mapStateToProps = (state: StoreState): StateProps => state;
 
-export const HomeScreen = connect(mapStateToProps, { getAllLocations })(
-  _HomeScreen
-);
+export const HomeScreen = connect(mapStateToProps, {
+  getAllLocations,
+  deleteALocation
+})(_HomeScreen);

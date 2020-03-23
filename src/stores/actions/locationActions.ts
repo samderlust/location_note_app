@@ -1,3 +1,4 @@
+import { IDeleteLocation } from './../types/locationTypes';
 import { ILocation } from '../types/locationTypes';
 import {
   ISetAllLocationActions,
@@ -50,4 +51,9 @@ export const setCurrentLocation = (
 export const setIsCreating = (isCreating: boolean): ISetIsCreating => ({
   type: locationActions.SET_IS_CREATING,
   data: isCreating
+});
+
+export const deleteALocation = (id: number): IDeleteLocation => ({
+  type: locationActions.DELETE_A_LOCATION,
+  data: id
 });

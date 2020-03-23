@@ -14,6 +14,7 @@ interface ILocationTableProps extends RouteComponentProps {
   allLocations: ILocation[];
   showDetail(): void;
   setCurrentLocation: Function;
+  deleteALocation: Function;
 }
 
 const _LocationTable = (props: ILocationTableProps) => {
@@ -44,6 +45,18 @@ const _LocationTable = (props: ILocationTableProps) => {
                   }}
                 >
                   VIEW
+                </Button>
+                <Button
+                  style={{
+                    marginLeft: 5
+                  }}
+                  variant="outlined"
+                  color="primary"
+                  onClick={() => {
+                    props.deleteALocation(location.id);
+                  }}
+                >
+                  DELETE
                 </Button>
               </TableCell>
             </TableRow>
