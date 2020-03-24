@@ -86,7 +86,7 @@ const _CreateLocation = (props: ICreateLocationProps & StateProps) => {
     <Container>
       <LocationAppBar />
       <div className={classes.container}>
-        <Typography variant="h3">Add New Pet</Typography>
+        <Typography variant="h3">Add New Location Note</Typography>
         <TextField
           error={errorField === 'name'}
           helperText={errorField === 'name' && errorText}
