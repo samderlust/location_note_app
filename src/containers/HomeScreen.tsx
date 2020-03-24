@@ -57,7 +57,10 @@ const _HomeScreen = (props: IHomeScreenProps & StateProps) => {
       <LocationAppBar />
       <div className={classes.container}>
         <Typography className={classes.header} variant="h3">
-          Location Notes
+          GPS location storage and access
+        </Typography>
+        <Typography className={classes.header} variant="h6">
+          Take note for a location
         </Typography>
         <ButtonGroup
           className={classes.buttonGroup}
